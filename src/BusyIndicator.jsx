@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 export default function BusyIndicator({ busy, length, delay }) {
   const [position, setPosition] = useState(0);
-  const updatePosition = () => setPosition(pos => (pos + 1) % length);
 
   useEffect(() => {
+    const updatePosition = () => setPosition(pos => (pos + 1) % length);
     if (!busy || !delay) return;
     const timerId = setInterval(updatePosition, delay);
     return () => clearInterval(timerId);
