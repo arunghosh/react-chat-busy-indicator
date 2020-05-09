@@ -1,5 +1,7 @@
 # React Busy Indicator for Chatbots
 
+[Click here for live demo](https://codesandbox.io/s/react-chatbot-busy-indicator-hy1fh?file=/src/BusyIndicator.js)
+
 During my work on [chatbot application](https://theparadox.life/posts/rule-based-chatbot-from-scratch-using-reactjs-and-nodejs-p1) there was a need for a busy indicator, when the user is waiting for the server response. 
 
 The busy indicator I had in mind looked like where the blue dot will keep moving.
@@ -19,9 +21,9 @@ Initially I thought it to be a complicated one, but ended up having a few lines 
 ```javascript
 function BusyIndicator({ busy, length, delay }) {
   const [position, setPosition] = useState(0);
-  const updatePosition = () => setPosition(pos => (pos + 1) % length);
 
   useEffect(() => {
+    const updatePosition = () => setPosition(pos => (pos + 1) % length);
     if (!busy || !delay) return;
     const timerId = setInterval(updatePosition, delay);
     return () => clearInterval(timerId);
